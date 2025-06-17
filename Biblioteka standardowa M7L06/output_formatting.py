@@ -35,3 +35,33 @@ print("Pi: %.2f" % 3.14159)
 data = {"apples": 10, "bananas": 5, "oranges": 8}
 for fruit, count in data.items():
     print(f"{fruit:<10} | {count:>3}") 
+
+
+### Example 1
+name = "Szymon"
+age = 36
+print(f"My name is {name} and I'm {age} years old.")
+
+### Example 2
+persons = [
+    ("Adam", 27),
+    ("Jacek", 33),
+    ("Anna", 23),
+    ("Jan", 44),
+    ("Julia", 31),
+    ("Natalia", 30)
+]
+print(f"{'Name':<7} | {'Age':>3}")
+print("-" * 15)
+
+for name, age in persons:
+    print(f"{name:<7} | {age:>3}")
+
+### Example 3
+print()
+pi = 3.1415926535
+print(f"Pi with 4 decimal places: {pi:.4f}")
+
+### Example 4
+number = 13
+print(f"Binary: {number:b}")
