@@ -49,7 +49,7 @@ import re
 tekst = "kot pies kot kot pies"
 nowy = re.sub(r"kot", "tygrys", tekst)
 print(nowy)
-
+##########################################
 print("\nPrzykład 2")
 
 import re
@@ -57,3 +57,14 @@ import re
 tekst = "Cena to 50 zł"
 nowy = re.sub(r"\d+", "XX", tekst)
 print(nowy)
+
+####################################################
+####################################################
+print("\nPrzykłady re.split")
+print("Przykład 1")
+
+import re
+
+tekst = "imię;nazwisko;email"
+dane = re.split(r";", tekst)
+print(dane)
