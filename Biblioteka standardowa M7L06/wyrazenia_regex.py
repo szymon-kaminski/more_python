@@ -21,7 +21,7 @@ if dopasowanie:
 
 ####################################################
 ####################################################
-print("Przykład re.findall")
+print("\nPrzykłady re.findall")
 print("Przykład 1")
 
 import re
@@ -38,3 +38,22 @@ tekst = "Moje numery: 777-555-423, 123-789-012"
 wzorzec = r"\d{3}-\d{3}-\d{3}"
 wyniki = re.findall(wzorzec, tekst)
 print(wyniki)
+
+#####################################################
+#####################################################
+print("\nPrzykłady re.sub")
+print("Przykład 1")
+ 
+import re
+
+tekst = "kot pies kot kot pies"
+nowy = re.sub(r"kot", "tygrys", tekst)
+print(nowy)
+
+print("\nPrzykład 2")
+
+import re
+
+tekst = "Cena to 50 zł"
+nowy = re.sub(r"\d+", "XX", tekst)
+print(nowy)
