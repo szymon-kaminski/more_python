@@ -68,3 +68,27 @@ import re
 tekst = "imię;nazwisko;email"
 dane = re.split(r";", tekst)
 print(dane)
+
+####################################################
+####################################################
+print("\nPrzykład grupowanie")
+import re
+
+tekst = "Data: 2025-06-20"
+match = re.search(r"(\d{4})-(\d{2})-(\d{2})", tekst)
+if match:
+    print("Rok:", match.group(1))
+    print("Miesiąc:", match.group(2))
+    print("Dzień:", match.group(3))
+
+####################################################
+####################################################
+print("\nPrzykład wiele na raz")
+import re
+
+tekst = "Anna ma 2 koty, 3 psy i 1 królika. Więcej kotów nie chce."
+
+print(re.findall(r"\d", tekst))
+print(re.findall(r"\bkot\w*\b", tekst, re.IGNORECASE))  ## ignorowana jest wielkość liter
+print(re.sub(r"\d", "x", tekst))
+print(re.split(r"[,.]", tekst))
