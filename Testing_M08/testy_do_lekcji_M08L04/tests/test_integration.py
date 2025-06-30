@@ -7,11 +7,14 @@ def test_save_load_expenses():
         os.remove('budget.db')
         
     expenses = []
-    new_expense = Expense(500, "Integration test expense", find_next_id(expenses))
+    expense_id = find_next_id(expenses)
+    new_expense = Expense(id=expense_id, amount=500.0, description="Integration test expense")
     expenses.append(new_expense)
     save_budget(expenses)
     
     loaded_expenses = read_or_init_budget()
     assert len(loaded_expenses) == 1
-    assert loaded_expenses[0].amount == 500
-    assert loaded_expenses[0].description == "Integration test expense"
+    loaded = loaded_expenses[0]
+    assert loaded.id == expense_id
+    assert loaded.amount == 500.0
+    assert loaded.description == "Integration test expense"
