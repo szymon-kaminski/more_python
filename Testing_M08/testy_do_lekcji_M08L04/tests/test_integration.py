@@ -1,5 +1,5 @@
 import pytest
-from budget import Expense, save_budget, read_or_init_budget, find_next_id
+from testy_do_lekcji_M08L04.budget import Expense, save_budget, read_or_init_budget, find_next_id
 
 def test_save_load_expenses():
     if os.path.exists('budget.db'):
