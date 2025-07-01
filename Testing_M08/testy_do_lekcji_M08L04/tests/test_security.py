@@ -12,3 +12,9 @@ def test_naughty_strings_security(tmp_path, monkeypatch):
         "true", "false", "True", "False", "None", "hasOwnProperty",
         "\", "\\", "0", "1", "1.00", "$1.00", "1/2",
     ]
+
+    for naughty in naughty_strings:
+    try:
+        exp = Expense(id=1, amount=100.0, description=naughty)
+    except Exception as e:
+        pytest.fail(f"Cannot instantiate Expense with description '{naughty}': {e}")
