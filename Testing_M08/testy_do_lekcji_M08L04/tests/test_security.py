@@ -18,3 +18,13 @@ def test_naughty_strings_security(tmp_path, monkeypatch):
         exp = Expense(id=1, amount=100.0, description=naughty)
     except Exception as e:
         pytest.fail(f"Cannot instantiate Expense with description '{naughty}': {e}")
+
+
+    save_budget([exp])
+    loaded = read_or_init_budget()
+
+    assert len(loaded) == 1, "Expected one expense in DB"
+    stored = loaded[0]
+    assert stored.description == naughty, f"Description mismatch for '{naughty}'"
+    assert stored.amount == 100.0, "Amount changed during save/load"
+    assert stored.id == 1, "ID changed during save/load"
