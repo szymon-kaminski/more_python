@@ -1,10 +1,10 @@
-import os
 import pickle
-import pytest
 import sys
 
-from io import StringIO
 from unittest.mock import patch
+
+from testy_do_lekcji_M08L04.budget import cli
+import testy_do_lekcji_M08L04.budget as budget
 
 
 CLI_SCRIPT = "testy_do_lekcji_M08L04.budget"
@@ -18,8 +18,10 @@ def test_add_command(tmp_path, monkeypatch):
     # Symulacja wywołania CLI: python -m budget add 100 Test expense
     test_args = [sys.executable, "-m", CLI_SCRIPT, "add", "100", "Test expense"]
     with patch.object(sys, 'argv', test_args):
-        import budget
-        budget.cli()
+        cli()
+
+    loaded = budget.read_or_init_budget()
+    assert any(e.amount == 100 and e.description == "Test expense" for e in loaded)
 
     # Sprawdzenie pliku pickle
     with open(db_file, 'rb') as f:
@@ -40,8 +42,9 @@ def test_report_and_total(tmp_path, monkeypatch, capsys):
     # Symulacja wywołania: python -m budget report
     test_args = [sys.executable, "-m", CLI_SCRIPT, "report"]
     with patch.object(sys, 'argv', test_args):
-        import budget
-        budget.cli()
+        import testy_do_lekcji_M08L04.budget as budget
++       budget.cli()
+      
     captured = capsys.readouterr()
     output = captured.out
 
